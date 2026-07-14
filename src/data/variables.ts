@@ -78,83 +78,174 @@ export interface VariableDefinition {
  */
 export const variableDefinitions: Record<string, VariableDefinition> = {
     // ========================================
-    // ADD YOUR VARIABLES HERE
+    // GEAR LESSON VARIABLES
     // ========================================
 
-    // Uncomment and modify these examples for your lesson:
-
-    /*
     // ─────────────────────────────────────────
-    // NUMBER - Use with sliders
+    // SECTION 1: Meshing Gears
     // ─────────────────────────────────────────
-    myValue: {
-        defaultValue: 5,
+    driverRotation: {
+        defaultValue: 0,
         type: 'number',
-        label: 'My Value',
-        description: 'A number that controls something',
-        unit: 'm',           // optional unit display
+        label: 'Driver Rotation',
+        description: 'Rotation angle of the driver gear in degrees',
+        unit: '°',
         min: 0,
-        max: 10,
-        step: 0.5,
+        max: 720,
+        step: 1,
+        color: '#62D0AD', // teal for driver
+    },
+    driverTeeth: {
+        defaultValue: 12,
+        type: 'number',
+        label: 'Driver Teeth',
+        description: 'Number of teeth on the driver gear',
+        min: 8,
+        max: 32,
+        step: 1,
+        color: '#62D0AD',
+    },
+    drivenTeeth: {
+        defaultValue: 18,
+        type: 'number',
+        label: 'Driven Teeth',
+        description: 'Number of teeth on the driven gear',
+        min: 8,
+        max: 32,
+        step: 1,
+        color: '#8E90F5', // indigo for driven
     },
 
     // ─────────────────────────────────────────
-    // TEXT - Free text input
+    // SECTION 2: Gear Ratio
     // ─────────────────────────────────────────
-    lessonTitle: {
-        defaultValue: 'My Lesson',
-        type: 'text',
-        label: 'Lesson Title',
-        description: 'The title of your lesson',
-        placeholder: 'Enter a title...',
+    driverRpm: {
+        defaultValue: 60,
+        type: 'number',
+        label: 'Driver RPM',
+        description: 'Rotational speed of the driver gear',
+        unit: 'RPM',
+        min: 10,
+        max: 200,
+        step: 10,
+        color: '#62D0AD',
     },
 
     // ─────────────────────────────────────────
-    // SELECT - Dropdown with options
+    // SECTION 3: Torque Tradeoff
     // ─────────────────────────────────────────
-    difficulty: {
-        defaultValue: 'medium',
+    inputTorque: {
+        defaultValue: 10,
+        type: 'number',
+        label: 'Input Torque',
+        description: 'Torque applied to the driver gear',
+        unit: 'N·m',
+        min: 1,
+        max: 50,
+        step: 1,
+        color: '#F7B23B', // amber for torque
+    },
+
+    // ─────────────────────────────────────────
+    // SECTION 4: Gear Trains
+    // ─────────────────────────────────────────
+    gear1Teeth: {
+        defaultValue: 12,
+        type: 'number',
+        label: 'Gear 1 Teeth',
+        description: 'Teeth on the first gear (input)',
+        min: 8,
+        max: 24,
+        step: 1,
+        color: '#62D0AD',
+    },
+    gear2Teeth: {
+        defaultValue: 24,
+        type: 'number',
+        label: 'Gear 2 Teeth',
+        description: 'Teeth on the second gear',
+        min: 8,
+        max: 36,
+        step: 1,
+        color: '#8E90F5',
+    },
+    gear3Teeth: {
+        defaultValue: 16,
+        type: 'number',
+        label: 'Gear 3 Teeth',
+        description: 'Teeth on the third gear (output)',
+        min: 8,
+        max: 36,
+        step: 1,
+        color: '#AC8BF9',
+    },
+
+    // ─────────────────────────────────────────
+    // SECTION 5: Compound Gears
+    // ─────────────────────────────────────────
+    compoundSmallTeeth: {
+        defaultValue: 12,
+        type: 'number',
+        label: 'Compound Small Teeth',
+        description: 'Small gear on the compound shaft',
+        min: 8,
+        max: 20,
+        step: 1,
+        color: '#F8A0CD',
+    },
+    compoundLargeTeeth: {
+        defaultValue: 36,
+        type: 'number',
+        label: 'Compound Large Teeth',
+        description: 'Large gear on the compound shaft',
+        min: 24,
+        max: 48,
+        step: 1,
+        color: '#62CCF9',
+    },
+
+    // ─────────────────────────────────────────
+    // ASSESSMENT VARIABLES
+    // ─────────────────────────────────────────
+    answerMeshDirection: {
+        defaultValue: '',
         type: 'select',
-        label: 'Difficulty',
-        description: 'The difficulty level of the lesson',
-        options: ['easy', 'medium', 'hard', 'expert'],
+        label: 'Mesh Direction Answer',
+        description: 'Student answer for gear mesh direction',
+        placeholder: '???',
+        correctAnswer: 'opposite',
+        options: ['same', 'opposite', 'random'],
+        color: '#8E90F5',
     },
-
-    // ─────────────────────────────────────────
-    // BOOLEAN - Toggle switch
-    // ─────────────────────────────────────────
-    showHints: {
-        defaultValue: true,
-        type: 'boolean',
-        label: 'Show Hints',
-        description: 'Toggle to show or hide hints',
+    answerGearRatio: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Gear Ratio Answer',
+        description: 'Student answer for gear ratio calculation',
+        placeholder: '???',
+        correctAnswer: '1.5',
+        color: '#62D0AD',
     },
-
-    // ─────────────────────────────────────────
-    // ARRAY - List of numbers
-    // ─────────────────────────────────────────
-    dataPoints: {
-        defaultValue: [1, 4, 9, 16, 25],
-        type: 'array',
-        label: 'Data Points',
-        description: 'Y-values for plotting a graph',
+    answerTorqueTradeoff: {
+        defaultValue: '',
+        type: 'select',
+        label: 'Torque Tradeoff Answer',
+        description: 'Student answer for torque tradeoff question',
+        placeholder: '???',
+        correctAnswer: 'increases',
+        options: ['increases', 'decreases', 'stays the same'],
+        color: '#F7B23B',
     },
-
-    // ─────────────────────────────────────────
-    // OBJECT - Complex structured data
-    // ─────────────────────────────────────────
-    graphSettings: {
-        defaultValue: { 
-            xMin: -10, 
-            xMax: 10, 
-            showGrid: true 
-        },
-        type: 'object',
-        label: 'Graph Settings',
-        description: 'Configuration for the graph display',
-        schema: '{ xMin: number, xMax: number, showGrid: boolean }',
+    answerTrainDirection: {
+        defaultValue: '',
+        type: 'select',
+        label: 'Gear Train Direction Answer',
+        description: 'Student answer for 3-gear train direction',
+        placeholder: '???',
+        correctAnswer: 'same',
+        options: ['same', 'opposite'],
+        color: '#AC8BF9',
     },
-    */
 };
 
 /**
